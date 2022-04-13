@@ -53,6 +53,6 @@ process.on("unhandledRejection", (reason, promise) => {
 client.login(process.env.TOKEN);
 
 // Set up endpoint on "/" to get green status on EB
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5000;
 server.listen(port);
 console.log('Server running at http://127.0.0.1:' + port + '/');
