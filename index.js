@@ -2,6 +2,15 @@ const { Client, Collection, Intents } = require('discord.js');
 const handler = require("./handler/index");
 const express = require('express');
 
+// Setting up endpoint on 8080, so that health checks can be done to get green status
+const app = express();
+const port = 8080;
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.listen(port);
+console.log(`App running on http://localhost:${port}`);
+
 const client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
@@ -51,14 +60,4 @@ process.on("unhandledRejection", (reason, promise) => {
 
 // Login Discord Bot Token
 client.login(process.env.TOKEN);
-
-
-// Setting up endpoint on 8080, so that health checks can be done to get green status
-const app = express();
-const port = 8080;
-
-app.get('/', (req, res) => res.send('Hello World!'));
-
-app.listen(port);
-console.log(`App running on http://localhost:${port}`);
 
